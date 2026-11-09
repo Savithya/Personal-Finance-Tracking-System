@@ -19,10 +19,10 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useFinance } from "@/context/FinanceContext";
+import { FinoraBrand } from "./FinoraLogo";
 
 interface NavItem {
   name: string;
@@ -85,34 +85,43 @@ export function Sidebar() {
       )}
     >
       {/* Brand Header */}
-      <div className="h-16 flex items-center justify-between px-4 border-b border-slate-200 dark:border-white/5">
-        <Link href="/" className="flex items-center gap-2.5 overflow-hidden">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/20 shrink-0">
-            <Sparkles className="h-5 w-5 text-slate-950 font-bold" />
-          </div>
-          {!collapsed && (
-            <div className="flex flex-col">
-              <span className="text-base font-black tracking-wider text-slate-900 dark:text-white flex items-center gap-1.5">
-                FINORA
-                <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  LKR
-                </span>
-              </span>
-              <span className="text-[10px] font-medium text-slate-500 dark:text-slate-400 tracking-tight">
-                Personal Finance System
-              </span>
-            </div>
+      <div
+        className={cn(
+          "h-16 flex items-center border-b border-slate-200 dark:border-white/5 transition-all duration-300 relative",
+          collapsed ? "justify-center px-2" : "justify-between px-4"
+        )}
+      >
+        <Link
+          href="/"
+          className={cn(
+            "flex items-center gap-2.5 overflow-hidden group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-lg",
+            collapsed && "justify-center"
           )}
+          title={collapsed ? "FINORA Personal Finance (Click to expand)" : "FINORA – Home"}
+          onClick={collapsed ? (e) => { e.preventDefault(); setCollapsed(false); } : undefined}
+        >
+          <FinoraBrand collapsed={collapsed} />
         </Link>
 
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
-          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
-        </button>
+        {!collapsed ? (
+          <button
+            onClick={() => setCollapsed(true)}
+            className="h-7 w-7 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/10 transition-all active:scale-95 shrink-0"
+            title="Collapse sidebar"
+            aria-label="Collapse sidebar"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </button>
+        ) : (
+          <button
+            onClick={() => setCollapsed(false)}
+            className="absolute -right-3 top-5 h-6 w-6 rounded-full bg-white dark:bg-[#0C111D] border border-slate-200 dark:border-white/10 shadow-md flex items-center justify-center text-slate-400 hover:text-white hover:bg-emerald-500 dark:hover:bg-emerald-600 transition-all z-40 active:scale-95"
+            title="Expand sidebar"
+            aria-label="Expand sidebar"
+          >
+            <ChevronRight className="h-3 w-3" />
+          </button>
+        )}
       </div>
 
       {/* Main Navigation */}

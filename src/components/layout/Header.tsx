@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useFinance } from "@/context/FinanceContext";
 import { ThemeToggle } from "./ThemeToggle";
+import { FinoraEmblem, FinoraCurrencyBadge } from "./FinoraLogo";
 
 interface HeaderProps {
   onOpenMobileNav: () => void;
@@ -59,6 +60,10 @@ export function Header({ onOpenMobileNav }: HeaderProps) {
           <Menu className="h-5 w-5" />
         </button>
 
+        <Link href="/" className="md:hidden flex items-center" title="FINORA">
+          <FinoraEmblem size="sm" />
+        </Link>
+
         <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-white/[0.03] border border-slate-200 dark:border-white/5 text-xs text-slate-600 dark:text-slate-400">
           <CalendarIcon className="h-3.5 w-3.5 text-emerald-500 shrink-0" />
           <span className="font-medium text-slate-700 dark:text-slate-300 hidden sm:inline truncate max-w-[150px] md:max-w-none">
@@ -67,9 +72,7 @@ export function Header({ onOpenMobileNav }: HeaderProps) {
           <span className="font-medium text-slate-700 dark:text-slate-300 hidden min-[360px]:inline sm:hidden">
             {shortDate || "Colombo"}
           </span>
-          <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold border border-emerald-500/20 shrink-0">
-            LKR
-          </span>
+          <FinoraCurrencyBadge />
         </div>
       </div>
 

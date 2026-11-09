@@ -18,10 +18,10 @@ import {
   ShieldCheck,
   LogOut,
   X,
-  Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./ThemeToggle";
+import { FinoraBrand } from "./FinoraLogo";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -70,27 +70,14 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
       <div className="relative w-80 max-w-[85vw] bg-white dark:bg-[#070B14] border-r border-slate-200 dark:border-white/10 h-full flex flex-col z-10 shadow-2xl transition-transform duration-300">
         {/* Drawer Header */}
         <div className="h-16 px-4 flex items-center justify-between border-b border-slate-200 dark:border-white/5">
-          <div className="flex items-center gap-2.5">
-            <div className="h-8 w-8 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center shadow-sm">
-              <Sparkles className="h-4 w-4 text-slate-950 font-bold" />
-            </div>
-            <div>
-              <div className="text-sm font-black text-slate-900 dark:text-white flex items-center gap-1.5">
-                FINORA
-                <span className="text-[10px] px-1.5 py-0.2 rounded font-semibold bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
-                  LKR
-                </span>
-              </div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400">Mobile Navigation</div>
-            </div>
-          </div>
+          <FinoraBrand size="sm" showBadge={true} showSubtitle={true} />
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+            className="h-8 w-8 rounded-lg flex items-center justify-center text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/10 transition-colors"
             title="Close menu"
             aria-label="Close navigation"
           >
-            <X className="h-5 w-5" />
+            <X className="h-4 w-4" />
           </button>
         </div>
 
