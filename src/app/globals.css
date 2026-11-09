@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #070B14;
+  --foreground: #F8FAFC;
+  --card: #0C111D;
+  --card-foreground: #F8FAFC;
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-muted: rgba(255, 255, 255, 0.03);
+  --muted: #121827;
+  --muted-foreground: #94A3B8;
+  --accent: #10B981;
+  --accent-foreground: #FFFFFF;
+  --input-bg: rgba(255, 255, 255, 0.04);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --header-bg: rgba(7, 11, 20, 0.92);
+  --sidebar-bg: #070B14;
+  --sidebar-bottom: #05080F;
+  --scrollbar-thumb: rgba(148, 163, 184, 0.2);
+  --scrollbar-thumb-hover: rgba(148, 163, 184, 0.4);
+}
+
+html.light {
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --card: #FFFFFF;
+  --card-foreground: #0F172A;
+  --card-border: #E2E8F0;
+  --card-muted: #F1F5F9;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #059669;
+  --accent-foreground: #FFFFFF;
+  --input-bg: #FFFFFF;
+  --input-border: #CBD5E1;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --sidebar-bg: #FFFFFF;
+  --sidebar-bottom: #F8FAFC;
+  --scrollbar-thumb: rgba(100, 116, 139, 0.25);
+  --scrollbar-thumb-hover: rgba(100, 116, 139, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  max-width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Custom Responsive Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Touch-friendly momentum scrolling for mobile */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(12, 17, 29, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+}
+
+html.light .glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* AI Gradient borders & effects */
+.ai-gradient-border {
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(99, 102, 241, 0.1), rgba(6, 182, 212, 0.05));
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.ai-glow {
+  box-shadow: 0 0 35px -5px rgba(16, 185, 129, 0.25);
+}
+
+/* Table styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* ==========================================================================
+   LIGHT MODE DESIGN & THEME SYSTEM
+   Ensures all existing components, cards, tables, inputs, text, modals,
+   and charts adapt seamlessly with high contrast and aesthetic polish.
+   ========================================================================== */
+
+html.light {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Surface and Card Backgrounds in Light Mode */
+html.light .bg-\[\#070B14\],
+html.light .bg-\[\#070B14\]\/90,
+html.light .bg-\[\#070B14\]\/92,
+html.light .bg-\[\#070B14\]\/95 {
+  background-color: var(--header-bg) !important;
+}
+
+html.light .bg-\[\#0C111D\],
+html.light .bg-\[\#0E1424\],
+html.light .bg-\[\#0F1626\] {
+  background-color: #FFFFFF !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .bg-\[\#05080F\],
+html.light .bg-\[\#090D16\] {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+/* Borders and Dividers in Light Mode */
+html.light .border-white\/5,
+html.light .border-white\/10,
+html.light .border-white\/15,
+html.light .border-white\/20,
+html.light .border-white\/\[0\.08\],
+html.light .border-white\/\[0\.05\],
+html.light .border-white\/\[0\.02\] {
+  border-color: #E2E8F0 !important;
+}
+
+html.light .divide-white\/5 > :not([hidden]) ~ :not([hidden]),
+html.light .divide-white\/10 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #E2E8F0 !important;
+}
+
+/* Subtle surfaces, nested cards, and muted elements in Light Mode */
+html.light .bg-white\/\[0\.01\],
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/5 {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light .bg-white\/10 {
+  background-color: #F1F5F9 !important;
+  border-color: #CBD5E1 !important;
+}
+
+html.light .hover\:bg-white\/\[0\.04\]:hover,
+html.light .hover\:bg-white\/\[0\.02\]:hover,
+html.light .hover\:bg-white\/\[0\.08\]:hover,
+html.light .hover\:bg-white\/5:hover,
+html.light .hover\:bg-white\/10:hover {
+  background-color: #F1F5F9 !important;
+}
+
+/* Form Inputs, Textareas, and Selects in Light Mode */
+html.light input:not([type="checkbox"]):not([type="radio"]):not([type="color"]):not([type="range"]),
+html.light select,
+html.light textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border: 1px solid #CBD5E1 !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  border-color: #10B981 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 1px #10B981 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+html.light select option {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+html.dark select option {
+  background-color: #0C111D !important;
+  color: #F8FAFC !important;
+}
+
+/* Headings and Titles in Light Mode */
+html.light h1:not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-cyan"]),
+html.light h2:not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-cyan"]),
+html.light h3:not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-cyan"]),
+html.light h4:not([class*="text-emerald"]):not([class*="text-rose"]):not([class*="text-blue"]):not([class*="text-indigo"]):not([class*="text-purple"]):not([class*="text-amber"]):not([class*="text-cyan"]),
+html.light h5,
+html.light h6 {
+  color: #0F172A !important;
+}
+
+/* General Text Elements with text-white in Light Mode */
+html.light p.text-white,
+html.light label.text-white,
+html.light th.text-white,
+html.light td.text-white,
+html.light strong.text-white,
+html.light b.text-white,
+html.light div.text-white:not([class*="bg-emerald"]):not([class*="bg-rose"]):not([class*="bg-indigo"]):not([class*="bg-blue"]):not([class*="bg-cyan"]):not([class*="bg-purple"]):not([class*="bg-amber"]):not([class*="bg-gradient"]):not(button *),
+html.light span.text-white:not([class*="bg-emerald"]):not([class*="bg-rose"]):not([class*="bg-indigo"]):not([class*="bg-blue"]):not([class*="bg-cyan"]):not([class*="bg-purple"]):not([class*="bg-amber"]):not([class*="bg-gradient"]):not(button *):not([style*="background-color"]),
+html.light .text-slate-100,
+html.light .text-slate-200,
+html.light .text-slate-300 {
+  color: #0F172A !important;
+}
+
+html.light .text-slate-400 {
+  color: #64748B !important;
+}
+
+html.light .text-slate-500 {
+  color: #64748B !important;
+}
+
+/* Preserve crisp white text on buttons and colored containers */
+html.light button.bg-emerald-600,
+html.light button.bg-emerald-500,
+html.light button.bg-rose-600,
+html.light button.bg-rose-500,
+html.light button.bg-indigo-600,
+html.light button.bg-indigo-500,
+html.light button.bg-blue-600,
+html.light button.bg-cyan-600,
+html.light button.bg-purple-600,
+html.light button.bg-amber-600,
+html.light a.bg-emerald-600,
+html.light a.bg-indigo-600,
+html.light .bg-gradient-to-tr,
+html.light .bg-gradient-to-r,
+html.light button.bg-emerald-600 *,
+html.light button.bg-rose-600 *,
+html.light button.bg-indigo-600 *,
+html.light button.bg-blue-600 *,
+html.light a.bg-emerald-600 *,
+html.light a.bg-indigo-600 *,
+html.light [class*="bg-emerald-600"] *,
+html.light [class*="bg-rose-600"] *,
+html.light [class*="bg-indigo-600"] *,
+html.light [class*="bg-blue-600"] *,
+html.light [class*="bg-purple-600"] *,
+html.light [class*="bg-gradient"] *,
+html.light [style*="background-color: rgb"] *,
+html.light [style*="background-color: #"] * {
+  color: #FFFFFF !important;
+}
+
+/* Light Mode Overlays & Backdrops */
+html.light .fixed.inset-0.bg-black\/60,
+html.light .fixed.inset-0.bg-black\/70,
+html.light .fixed.inset-0.bg-black\/75,
+html.light .fixed.inset-0.bg-black\/80 {
+  background-color: rgba(15, 23, 42, 0.45) !important;
+}
+
+/* Light Mode Tables */
+html.light thead tr {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+}
+
+html.light thead th {
+  color: #64748B !important;
+}
+
+html.light tr.hover\:bg-white\/\[0\.02\]:hover,
+html.light tr.hover\:bg-white\/5:hover {
+  background-color: #F1F5F9 !important;
+}
+
+/* Recharts Tooltips and Grids */
+html.light .recharts-default-tooltip {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #0F172A !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 12px !important;
+}
+
+html.light .recharts-tooltip-item {
+  color: #0F172A !important;
+}
+
+html.light .recharts-tooltip-label {
+  color: #64748B !important;
+}
+
+html.light .recharts-cartesian-grid line {
+  stroke: #E2E8F0 !important;
+}
+
+html.dark .recharts-default-tooltip {
+  background-color: #0C111D !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #F8FAFC !important;
+  border-radius: 12px !important;
+}
+
+html.dark .recharts-cartesian-grid line {
+  stroke: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ==========================================================================
+   ALL-DEVICE RESPONSIVE OPTIMIZATIONS
+   ========================================================================== */
+
+/* Safe area padding for mobile iPhones / modern devices */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 1rem);
+}
+
+/* Touch targets: minimum 40px for comfortable tap on mobile phones */
+@media (max-width: 640px) {
+  button,
+  a[role="button"],
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    min-height: 38px;
+  }
+
+  /* Compact table padding on phones */
+  td,
+  th {
+    padding-left: 0.625rem !important;
+    padding-right: 0.625rem !important;
+  }
+}
